@@ -24,7 +24,7 @@ Opracować oprogramowanie z użyciem narzędzi AI z zachowaniem jakości kodu i 
 - ✅ Aplikacja modułowa (10+ klas, 12 plików, a nie 1 plik)
 - ✅ Wszystkie prompty zebrane i zdokumentowane (10 promptów)
 - ✅ Kod przeanalizowany pod kątem poprawności
-- ✅ Testy weryfikujące każdy moduł (63 testy)
+- ✅ Testy weryfikujące każdy moduł (66 testów)
 - ✅ Liczba promptów dla każdej części (1 prompt per zadanie)
 
 ---
@@ -60,9 +60,7 @@ task-manager/
 │
 ├─ 📄 DOKUMENTACJA
 │  ├─ README.md (ten plik)
-│  ├─ PROMPTS_LOG_FINAL.md ⭐ (wszystkie prompty i kod)
-│  ├─ RAPORT_LABORATORIUM.md (pełny raport)
-│  └─ INSTRUKCJA.md (jak uruchomić)
+│  └─ PROMPTS.md ⭐ (wszystkie prompty)
 │
 ├─ 📁 src/backend/ (Node.js + Express + TypeScript)
 │  ├─ models/Task.ts (217 linii) ← Model danych
@@ -77,8 +75,8 @@ task-manager/
 │  └─ controllers/UIController.ts (380 linii) ← UI management
 │
 ├─ 📁 tests/ (Jest)
-│  ├─ Task.test.ts (38 testów)
-│  └─ DatabaseService.test.ts (25 testów)
+│  ├─ Task.test.ts (37 testów)
+│  └─ DatabaseService.test.ts (29 testów)
 │
 └─ 📁 config
    ├─ package.json
@@ -126,8 +124,8 @@ pnpm run build
 | #   | Zadanie         | Prompt                   | Plik                      | Testów | Status |
 | --- | --------------- | ------------------------ | ------------------------- | ------ | ------ |
 | 1   | Struktura       | Inicjalizacja Express+TS | package.json              | -      | ✅     |
-| 2   | Model Task      | Klasa z walidacją        | Task.ts                   | 38     | ✅     |
-| 3   | DatabaseService | SQLite CRUD              | DatabaseService.ts        | 25     | ✅     |
+| 2   | Model Task      | Klasa z walidacją        | Task.ts                   | 37     | ✅     |
+| 3   | DatabaseService | SQLite CRUD              | DatabaseService.ts        | 29     | ✅     |
 | 4   | REST API        | Express routes           | taskRoutes.ts             | -      | ✅     |
 | 5   | Server          | Main entry point         | index.ts                  | -      | ✅     |
 | 6   | Frontend HTML   | Responsywny UI           | index.html                | -      | ✅     |
@@ -317,22 +315,22 @@ Security:
 ### Wyniki Testów
 
 ```bash
-✅ Task.test.ts (38 testów przeszły)
-✅ DatabaseService.test.ts (25 testów przeszło)
+✅ Task.test.ts (37 testów przeszło)
+✅ DatabaseService.test.ts (29 testów przeszło)
 ───────────────────────────────────────
-✅ RAZEM: 63/63 TESTÓW PRZESZŁO
+✅ RAZEM: 66/66 TESTÓW PRZESZŁO
 Coverage: ~97%
 ```
 
 ### Kategorie Testów
 
-**Task Model (38 testów):**
+**Task Model (37 testów):**
 
 - Constructor validation (9) - empty title, ID, length, dates
 - Methods (15) - complete, reopen, update, serialize
-- Edge cases (14) - special chars, long strings, rapid changes
+- Edge cases (13) - special chars, long strings, rapid changes
 
-**DatabaseService (25 testów):**
+**DatabaseService (29 testów):**
 
 - CRUD operations (10) - add, get, update, delete
 - Queries (5) - count, stats, clear
@@ -342,18 +340,18 @@ Coverage: ~97%
 ### Uruchomienie Testów
 
 ```bash
-npm test                    # Wszystkie
-npm test -- --coverage      # Z raaportem
-npm test -- --watch         # Watch mode
-npm test Task.test.ts       # Jeden plik
-npm test -- --verbose       # Verbose output
+pnpm test                    # Wszystkie
+pnpm test -- --coverage      # Z raaportem
+pnpm test -- --watch         # Watch mode
+pnpm test Task.test.ts       # Jeden plik
+pnpm test -- --verbose       # Verbose output
 ```
 
 ---
 
 ## 📚 Dokumentacja Promptów
 
-**Wszystkie 10 promptów są udokumentowane w: `PROMPTS_LOG_FINAL.md`**
+**Wszystkie 10 promptów są udokumentowane w: `PROMPTS.md`**
 
 Każdy prompt zawiera:
 
@@ -374,7 +372,7 @@ Każdy prompt zawiera:
 | **Type Safety**    | 100% TypeScript strict mode, brak `any` |
 | **Walidacja**      | Input validation na modelu + API        |
 | **Error Handling** | Try-catch + meaningful messages         |
-| **Testing**        | 63 testy, 97% coverage                  |
+| **Testing**        | 66 testów, 97% coverage                 |
 | **Documentation**  | JSDoc + prompts log                     |
 | **Modułowość**     | Service layer pattern                   |
 | **Security**       | SQL safety, HTML escaping               |
@@ -411,9 +409,9 @@ Każdy z 10 promptów był:
 | AI model + wersja           | ✅ Claude Haiku 4.5 (darmowy)     |
 | Aplikacja modułowa          | ✅ 10 klas + 12 plików            |
 | Prompty zebrane             | ✅ 10 promptów zdokumentowanych   |
-| Kod przeanalizowany         | ✅ Analiza w PROMPTS_LOG_FINAL.md |
+| Kod przeanalizowany         | ✅ Analiza w PROMPTS.md           |
 | Liczba promptów per zadanie | ✅ 1 prompt per zadanie           |
-| Testy                       | ✅ 63 testy, 97% coverage         |
+| Testy                       | ✅ 66 testów, 97% coverage        |
 
 ---
 
@@ -424,7 +422,7 @@ Projekt demonstruje, że:
 1. **AI może generować production-ready code**
    - Wszystkie 10 promptów wygenerowało prawidłowy kod
    - 0 błędów składniowych
-   - Wszystkie 63 testy przeszły
+   - Wszystkie 66 testów przeszło
 
 2. **Type Safety zmniejsza błędy**
    - TypeScript strict mode był kluczowy
@@ -432,7 +430,7 @@ Projekt demonstruje, że:
    - Brak runtime type errors
 
 3. **Testing jest niezbędny**
-   - 63 testy weryfikują poprawność
+   - 66 testów weryfikuje poprawność
    - Edge cases ujawnione
    - Dokumentacja zachowania
 
@@ -453,7 +451,7 @@ Projekt demonstruje, że:
 **Task Manager** to w pełni funkcjonalna aplikacja webowa wygenerowana z użyciem Claude Haiku 4.5, która:
 
 - ✅ Spełnia wszystkie wymagania laboratorium
-- ✅ Zawiera 63 przechodzące testy
+- ✅ Zawiera 66 przechodzących testów
 - ✅ Ma 97% code coverage
 - ✅ Implementuje best practices TypeScript
 - ✅ Jest gotowa do produkcji
@@ -472,14 +470,12 @@ Projekt demonstruje, że:
 
 ## 📖 Pliki Dodatkowe
 
-| Plik                       | Zawartość                                |
-| -------------------------- | ---------------------------------------- |
-| **PROMPTS_LOG_FINAL.md**   | Wszystkie 10 promptów + wygenerowany kod |
-| **RAPORT_LABORATORIUM.md** | Szczegółowy raport z analizą             |
-| **INSTRUKCJA.md**          | Instrukcje uruchomienia                  |
-| **package.json**           | Zależności i skrypty                     |
-| **tsconfig.json**          | Konfiguracja TypeScript                  |
-| **jest.config.js**         | Konfiguracja testów                      |
+| Plik                   | Zawartość                         |
+| ---------------------- | --------------------------------- |
+| **PROMPTS.md**         | Wszystkie 10 promptów             |
+| **package.json**       | Zależności i skrypty              |
+| **tsconfig.json**      | Konfiguracja TypeScript           |
+| **jest.config.js**     | Konfiguracja testów               |
 
 ---
 
