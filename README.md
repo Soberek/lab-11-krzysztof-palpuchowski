@@ -7,7 +7,7 @@
 | Atrybut         | Wartość                                    |
 | --------------- | ------------------------------------------ |
 | **Student**     | Krzysztof Palpuchowski                     |
-| **Model AI**    | Claude Haiku 4.5 (Darmowy)                 |
+| **Model AI**    | Claude Haiku 4.5 (Płatny)                  |
 | **Technologia** | TypeScript, Node.js, Express, SQLite, Jest |
 | **Data**        | 22 Styczeń 2026                            |
 | **Status**      | ✅ Ukończone                               |
@@ -40,9 +40,9 @@ Opracować oprogramowanie z użyciem narzędzi AI z zachowaniem jakości kodu i 
 └─ Public methods: 50+
 
 🧪 TESTOWANIE
-├─ Łącznie testów: 63
-├─ Task tests: 38
-├─ DatabaseService tests: 25
+├─ Łącznie testów: 66
+├─ Task tests: 37
+├─ DatabaseService tests: 29
 └─ Coverage: 97%
 
 ⚡ PERFORMANCE
@@ -93,19 +93,22 @@ task-manager/
 ### 1. Instalacja
 
 ```bash
-npm install
+pnpm install
+pnpm approve-builds  # Zatwierdzenie kompilacji natywnych modułów (sqlite3)
 ```
 
-### 2. Uruchomienie Testów (63 testy ✅)
+### 2. Uruchomienie Testów (66 testów ✅)
 
 ```bash
-npm test
+pnpm test
 ```
+
+Testy są uruchamiane z flagą `--experimental-vm-modules` umożliwiającą obsługę modułów ES w Node.js.
 
 ### 3. Uruchomienie Serwera
 
 ```bash
-npm run dev
+pnpm run dev
 ```
 
 Serwer będzie dostępny na: **http://localhost:3000**
@@ -113,7 +116,7 @@ Serwer będzie dostępny na: **http://localhost:3000**
 ### 4. Build
 
 ```bash
-npm run build
+pnpm run build
 ```
 
 ---
@@ -131,9 +134,60 @@ npm run build
 | 7   | TaskClient      | API client               | TaskClient.ts             | -      | ✅     |
 | 8   | UIController    | UI management            | UIController.ts           | -      | ✅     |
 | 9   | Frontend App    | Main app                 | app.ts                    | -      | ✅     |
-| 10  | Testy           | Unit tests               | Task.test.ts + DB.test.ts | 63     | ✅     |
+| 10  | Testy           | Unit tests               | Task.test.ts + DB.test.ts | 66     | ✅     |
 
-**Podsumowanie:** 10 promptów → 12 plików → 63 testy ✅
+**Podsumowanie:** 10 promptów → 12 plików → 66 testów ✅
+
+---
+
+## ⚙️ Konfiguracja
+
+### Jest Configuration (ESM + TypeScript)
+
+Projekt konfiguruje Jest do pracy z:
+
+- **ES Modules (ESM)** - Wsparcie dla `import/export` zamiast CommonJS
+- **TypeScript** - Kompilacja `.ts` plików za pomocą `ts-jest`
+- **Node.js VM Modules** - Flag `--experimental-vm-modules` umożliwia native ESM
+
+**Konfiguracja w `jest.config.js`:**
+
+```javascript
+{
+  preset: "ts-jest",
+  extensionsToTreatAsEsm: [".ts"],
+  transform: {
+    "^.+\\.tsx?$": ["ts-jest", { useESM: true }]
+  }
+}
+```
+
+**Polecenie testowania w `package.json`:**
+
+```json
+"test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+```
+
+### Importy TypeScript
+
+Wszystkie importy używają rozszerzenia **bez `.js`**:
+
+```typescript
+// ✅ Prawidłowo
+import { Task } from "../models/Task";
+import { DatabaseService } from "../services/DatabaseService";
+
+// ❌ Nieprawidłowo (dla development)
+import { Task } from "../models/Task.js";
+```
+
+### Natywne Moduły (sqlite3)
+
+Po instalacji (`pnpm install`) należy zatwierdzić kompilację natywnych modułów:
+
+```bash
+pnpm approve-builds
+```
 
 ---
 
