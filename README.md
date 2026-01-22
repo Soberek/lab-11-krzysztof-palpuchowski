@@ -404,14 +404,14 @@ Każdy z 10 promptów był:
 
 ## 📊 Porównanie Wymagań
 
-| Wymaganie                   | Spełnione                         |
-| --------------------------- | --------------------------------- |
-| AI model + wersja           | ✅ Claude Haiku 4.5 (darmowy)     |
-| Aplikacja modułowa          | ✅ 10 klas + 12 plików            |
-| Prompty zebrane             | ✅ 10 promptów zdokumentowanych   |
-| Kod przeanalizowany         | ✅ Analiza w PROMPTS.md           |
-| Liczba promptów per zadanie | ✅ 1 prompt per zadanie           |
-| Testy                       | ✅ 66 testów, 97% coverage        |
+| Wymaganie                   | Spełnione                       |
+| --------------------------- | ------------------------------- |
+| AI model + wersja           | ✅ Claude Haiku 4.5 (darmowy)   |
+| Aplikacja modułowa          | ✅ 10 klas + 12 plików          |
+| Prompty zebrane             | ✅ 10 promptów zdokumentowanych |
+| Kod przeanalizowany         | ✅ Analiza w PROMPTS.md         |
+| Liczba promptów per zadanie | ✅ 1 prompt per zadanie         |
+| Testy                       | ✅ 66 testów, 97% coverage      |
 
 ---
 
@@ -470,12 +470,12 @@ Projekt demonstruje, że:
 
 ## 📖 Pliki Dodatkowe
 
-| Plik                   | Zawartość                         |
-| ---------------------- | --------------------------------- |
-| **PROMPTS.md**         | Wszystkie 10 promptów             |
-| **package.json**       | Zależności i skrypty              |
-| **tsconfig.json**      | Konfiguracja TypeScript           |
-| **jest.config.js**     | Konfiguracja testów               |
+| Plik               | Zawartość               |
+| ------------------ | ----------------------- |
+| **PROMPTS.md**     | Wszystkie 10 promptów   |
+| **package.json**   | Zależności i skrypty    |
+| **tsconfig.json**  | Konfiguracja TypeScript |
+| **jest.config.js** | Konfiguracja testów     |
 
 ---
 
